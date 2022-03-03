@@ -4,3 +4,4 @@ from pydantic import BaseModel
 class offers(BaseModel):
     compensation: str
     bonus: str
+    benefits: str
