@@ -1,5 +1,5 @@
 import motor.motor_asyncio
-from model import Todo
+from model import offers
 
 client = motor.motor_asyncio.AsyncIOMotorClient()
 
