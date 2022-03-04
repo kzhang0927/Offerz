@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import Dashboard from "./Dashboard"
+import Offer from "./Offer"
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
                 <Route path="/forgot-password" component={ForgotPassword} />
+                <Route path="/offer/:offerID" component={Offer} />
             </Switch>
           </AuthProvider>
         </Router>
