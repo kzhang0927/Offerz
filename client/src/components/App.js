@@ -8,22 +8,25 @@ import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
+import Dashboard from "./Dashboard"
+
 
 function App() {
   return (
     <Container
       className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
+      style={{ minHeight: "100vh"}}
     >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
+      <div className="w-100">
         <Router>
           <AuthProvider>
             <Switch>
-              <PrivateRoute exact path="/" component={ProfileManager} /> //We're using Profilemanager as the default for now, but will add a dashboard
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <Route path="/forgot-password" component={ForgotPassword} />
+                <PrivateRoute exact path="/" component={Dashboard} /> 
+                <PrivateRoute path="/update-profile" component={UpdateProfile} />
+                <PrivateRoute exact path="/ProfileManager" component={ProfileManager}/> 
+                <Route path="/signup" component={Signup} />
+                <Route path="/login" component={Login} />
+                <Route path="/forgot-password" component={ForgotPassword} />
             </Switch>
           </AuthProvider>
         </Router>
