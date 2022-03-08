@@ -1,30 +1,25 @@
-from typing import Optional
-from fastapi import FastAPI
+from typing import Optional, List
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 app = FastAPI()
 
-# Hardcoded to localhost
-origins = [
-    "http://localhost:3000",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+@app.get("/", tags=["Root"])
+async def read_root():
+    return {"message": "Welcome to this fantastic app!"}
 
 @app.get("/api/offer")
-async def get_alloffers():
-    return "TO-DO to get all offers for dashboard"
+async def get_offers():
+    return "To-DO to get all offers"
 
 @app.get("/api/offer/{offerid}")
-async def get_offer(offerid):
-    return "TO-DO to get specific offer data for offer generation & potential editing later on"
+async def get_offer():
+    return "To-DO to get a specific offer"
 
 @app.post("/api/offer/")
 async def create_offer():
-    return "TO-DO to create new offer"
+    return "TO-DO to create an offer"
+
+if __name__ == "__main__":
+    uvicorn.run("server.app:app", host="0.0.0.0", port=8000, reload=True)
