@@ -6,3 +6,5 @@
 .env.test.local
 .env.production.local
 .env
+venv/
+__pycache__
