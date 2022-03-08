@@ -1,10 +1,12 @@
 import motor.motor_asyncio
-import os
+from decouple import config
 
-print(os.environ["url"])
-#client = motor.motor_asyncio.AsyncIOMotorClient(os.environ["url"])
+mongo_url=config('url')
+client = motor.motor_asyncio.AsyncIOMotorClient(mongo_url)
 
-#db = client.offerzdb
+database = client.OfferDB
+offers_collection = database.get_collection("Offers")
+
 #collection = db.offer
 
 #TO-DO
