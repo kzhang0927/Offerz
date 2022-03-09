@@ -52,7 +52,7 @@ class Discounts(BaseModel):
     Description: Optional[str]
     Min_Spend: Optional[float] = 0 #Defaults to $0
     Expected_Spend: Optional[float] # If chosen we need to require this in UI
-    Max_Spend: Optional[float] = Expected_Spend*2
+    Max_Spend: Optional[float]
 
 # For perks nested subclass
 class Perks(BaseModel):
