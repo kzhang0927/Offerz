@@ -44,7 +44,7 @@ async def add_offer(offer_data: dict) -> dict:
 
 # Retrieve an offer with a matching ID
 async def retrieve_offer(id: str) -> dict:
-    offer = await offers_collection.find_one({"_id": ObjectId(id)})
+    offer = await offers_collection.find_one({"_id": id})
     if offer:
         return offer_helper(offer)
 

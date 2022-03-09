@@ -36,3 +36,18 @@ async def add_offer_data(offer: OfferSchema = Body(...)):
     new_offer = await add_offer(offer)
     return ResponseModel(new_offer, "Offer added successfully.")
 
+@router.get("/", response_description="Offers retrieved")
+async def get_offers():
+    offers = await retrieve_offers()
+    if offers:
+        return ResponseModel(offers, "Offers retrieved successfully")
+    return ResponseModel(offers, "No offers found")
+
+@router.get("/{id}", response_description="Specific offer retrieved")
+async def get_offer_data(id):
+    offer = await retrieve_offer(id)
+    if offer:
+        return ResponseModel(offer, "Offer retrieved successfully")
+    return ErrorResponseModel("An error occurred.", 404, "Offer doesn't exist.")
+
+#In the future we'll want delete and updates
