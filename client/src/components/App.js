@@ -10,6 +10,7 @@ import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
 import Dashboard from "./Dashboard"
 import Offer from "./Offer"
+import CreateOffer from "./CreateOffer"
 
 
 function App() {
@@ -24,7 +25,8 @@ function App() {
             <Switch>
                 <PrivateRoute exact path="/" component={Dashboard} /> 
                 <PrivateRoute path="/update-profile" component={UpdateProfile} />
-                <PrivateRoute exact path="/ProfileManager" component={ProfileManager}/> 
+                <PrivateRoute exact path="/ProfileManager" component={ProfileManager}/>
+                <PrivateRoute exact path="/CreateOffer" component={CreateOffer}/>  
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
                 <Route path="/forgot-password" component={ForgotPassword} />
