@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import React from "react"
 import { Form as BootStrapForm, Container, Card, Button, Alert, Table } from "react-bootstrap"
 
-
 //const Form = JSONSchemaForm.default;
 
 const schema = {
@@ -15,7 +14,7 @@ const schema = {
           'Monthly',
           'Annual'
         ],
-        title: 'Time period to display',
+        title: 'Time period to display offer letter',
         type: 'string'
       },
       create_date: {
@@ -633,13 +632,34 @@ const uiSchema = {
     definitions: {}
   }
 
-export default function CreateOffer() {
+
+export default function CreateOffer(props) {
+    
+    const handleSubmit = ({formData}) => {
+        try {
+            console.log(formData)
+            // const response = await axios({
+            //   method: "post",
+            //   url: "/api/login",
+            //   data: loginFormData,
+            //   headers: { "Content-Type": "multipart/form-data" },
+            // });
+            } 
+        catch(error) {
+            console.log(error)
+            }
+    }
+
+
     return (
         <Container className="mt-4 mb-4"> 
             <Card style={{maxWidth:"800px", margin:"0 auto"}}>
                 <Card.Body>
-                    <Form schema={schema}
-                            uiSchema={uiSchema}/>
+                    <Form 
+                    schema={schema}
+                    uiSchema={uiSchema} 
+                    onSubmit={handleSubmit}
+                    />
                 </Card.Body>
             </Card>  
         </ Container>

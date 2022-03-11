@@ -3,12 +3,12 @@ black==20.8b1
 click==7.1.2
 dnspython==2.0.0
 email-validator==1.1.2
-fastapi==0.62.0
+fastapi
 flake8==3.8.4
 h11==0.11.0
 idna==2.10
 mccabe==0.6.1
-motorpip install -r requirements.txt
+motor
 mypy-extensions==0.4.3
 pathspec==0.8.1
 pycodestyle==2.6.0
@@ -19,5 +19,5 @@ regex==2020.11.13
 starlette==0.13.6
 toml==0.10.2
 typing-extensions==3.7.4.3
-uvicorn==0.12.3
+uvicorn
 python-decouple

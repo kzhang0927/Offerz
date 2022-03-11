@@ -42,7 +42,8 @@ async def add_offer(offer_data: dict) -> dict:
     new_offer = await offers_collection.find_one({"_id": offer.inserted_id})
     return offer_helper(new_offer)
 
-# Retrieve an offer with a matching ID
+# Retrieve an offer with a matching ID. 
+# May want to eventually trim the retrieved offer so that we only send over the "Included:Yes" objects
 async def retrieve_offer(id: str) -> dict:
     offer = await offers_collection.find_one({"_id": id})
     if offer:
