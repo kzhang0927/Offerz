@@ -1,13 +1,14 @@
 import React from "react"
 import { Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
 
 export default function ProfileManager() {
-
+  const { currentUser} = useAuth()
   return (
     <>
       <div style={{position:"absolute",top:"10px",right:"50px"}}>
-        <Link to="/ProfileManager">Manage Profile</Link>
+        <Link to="/ProfileManager">Manage Profile for {currentUser.email} </Link>
       </div>
       <card>
         <Link to="/CreateOffer" className="btn btn-primary">

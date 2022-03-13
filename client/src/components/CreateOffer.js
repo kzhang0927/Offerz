@@ -654,6 +654,8 @@ export default function CreateOffer(props) {
         }
     }
 
+//We'll eventually want to add the page to route to a /Results/ID where it'll show the link and let users email or text
+
 
     return (
         <Container className="mt-4 mb-4"> 
