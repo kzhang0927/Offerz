@@ -15,4 +15,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(OfferRouter, tags=["Offer"], prefix="/offer")
+app.include_router(OfferRouter, tags=["Offer"], prefix="/api")

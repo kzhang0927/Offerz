@@ -640,7 +640,7 @@ export default function CreateOffer(props) {
         try {
             const response = await axios({
                 method: "post",
-                url: "http://localhost:8000/offer/",
+                url: "http://localhost:8000/api/",
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" },
               })
