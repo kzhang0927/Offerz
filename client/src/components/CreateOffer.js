@@ -2,6 +2,7 @@ import Form from "@rjsf/core"
 import { Link } from "react-router-dom"
 import React from "react"
 import { Form as BootStrapForm, Container, Card, Button, Alert, Table } from "react-bootstrap"
+import axios from 'axios'
 
 //const Form = JSONSchemaForm.default;
 
@@ -635,19 +636,21 @@ const uiSchema = {
 
 export default function CreateOffer(props) {
     
-    const handleSubmit = ({formData}) => {
+    const handleSubmit = async({formData}) => {
         try {
-            console.log(formData)
-            // const response = await axios({
-            //   method: "post",
-            //   url: "/api/login",
-            //   data: loginFormData,
-            //   headers: { "Content-Type": "multipart/form-data" },
-            // });
-            } 
-        catch(error) {
+            const response = await axios({
+                method: "post",
+                url: "http://localhost:8000/offer/",
+                data: formData,
+                headers: { "Content-Type": "multipart/form-data" },
+              })
+              .then((response) => {
+                console.log(response)
+                console.log(response.data.data[0].id)
+            });
+        } catch(error) {
             console.log(error)
-            }
+        }
     }
 
 
