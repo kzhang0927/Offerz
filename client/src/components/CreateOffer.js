@@ -633,9 +633,9 @@ const uiSchema = {
     definitions: {}
   }
 
+let created_offer_id = ""
 
 export default function CreateOffer(props) {
-    
     const handleSubmit = async({formData}) => {
         try {
             const response = await axios({
@@ -646,7 +646,8 @@ export default function CreateOffer(props) {
               })
               .then((response) => {
                 console.log(response)
-                console.log(response.data.data[0].id)
+                created_offer_id = response.data.data[0].id
+                console.log(created_offer_id)
             });
         } catch(error) {
             console.log(error)
