@@ -11,7 +11,9 @@ import UpdateProfile from "./UpdateProfile"
 import Dashboard from "./Dashboard"
 import Offer from "./Offer"
 import CreateOffer from "./CreateOffer"
+import CreatedSuccess from "./CreatedSuccess"
 
+//Before deploying, ensure links are routed properly and get HTTPS
 
 function App() {
   return (
@@ -26,7 +28,8 @@ function App() {
                 <PrivateRoute exact path="/" component={Dashboard} /> 
                 <PrivateRoute path="/update-profile" component={UpdateProfile} />
                 <PrivateRoute exact path="/ProfileManager" component={ProfileManager}/>
-                <PrivateRoute exact path="/CreateOffer" component={CreateOffer}/>  
+                <PrivateRoute exact path="/CreateOffer" component={CreateOffer}/>
+                <PrivateRoute exact path="/CreateOffer/CreatedSuccess/:offerID" component={CreatedSuccess}/>    
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
                 <Route path="/forgot-password" component={ForgotPassword} />

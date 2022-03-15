@@ -1,5 +1,5 @@
 import Form from "@rjsf/core"
-import { Link } from "react-router-dom"
+import { Link, useHistory} from "react-router-dom"
 import React from "react"
 import { Form as BootStrapForm, Container, Card, Button, Alert, Table } from "react-bootstrap"
 import axios from 'axios'
@@ -636,6 +636,7 @@ const uiSchema = {
 let created_offer_id = ""
 
 export default function CreateOffer(props) {
+    const history = useHistory()
     const handleSubmit = async({formData}) => {
         try {
             const response = await axios({
@@ -648,14 +649,12 @@ export default function CreateOffer(props) {
                 console.log(response)
                 created_offer_id = response.data.data[0].id
                 console.log(created_offer_id)
+                history.push("/CreateOffer/CreatedSuccess/"+created_offer_id)
             });
         } catch(error) {
             console.log(error)
         }
     }
-
-//We'll eventually want to add the page to route to a /Results/ID where it'll show the link and let users email or text
-
 
     return (
         <Container className="mt-4 mb-4"> 
