@@ -1,6 +1,6 @@
 import React from "react"
 import Signup from "./Signup"
-import { Container } from "react-bootstrap"
+import { Container, Navbar, Nav } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import ProfileManager from "./ProfileManager"
@@ -21,19 +21,12 @@ function App() {
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh"}}
     >
-      <div className="w-100">
+      <div className="w-100 pt-5">
         <Router>
           <AuthProvider>
             <Switch>
-                <PrivateRoute exact path="/" component={Dashboard} /> 
-                <PrivateRoute path="/update-profile" component={UpdateProfile} />
-                <PrivateRoute exact path="/ProfileManager" component={ProfileManager}/>
-                <PrivateRoute exact path="/CreateOffer" component={CreateOffer}/>
-                <PrivateRoute exact path="/CreateOffer/CreatedSuccess/:offerID" component={CreatedSuccess}/>    
-                <Route path="/signup" component={Signup} />
-                <Route path="/login" component={Login} />
-                <Route path="/forgot-password" component={ForgotPassword} />
-                <Route path="/offer/:offerID" component={Offer} />
+                <Route path="/offer/:offerID" component={OfferContainer} />
+                <Route component={DefaultContainer}/>
             </Switch>
           </AuthProvider>
         </Router>
@@ -41,5 +34,34 @@ function App() {
     </Container>
   )
 }
+
+const OfferContainer = () => (
+  <Container>
+    <Route path="/offer/:offerID" component={Offer} />
+  </Container>
+)
+
+const DefaultContainer = () => (
+  <Container>
+  <Navbar fixed="top" bg="dark" variant="dark">
+    <Container >
+      <Navbar.Brand href="#home" >Offerz</Navbar.Brand>
+      <Nav className="me-auto">
+        <Nav.Link href="/">Home</Nav.Link>
+      </Nav>
+    </Container>
+  </Navbar>  
+  <Container>
+    <PrivateRoute exact path="/" component={Dashboard} /> 
+    <PrivateRoute path="/update-profile" component={UpdateProfile} />
+    <PrivateRoute exact path="/ProfileManager" component={ProfileManager}/>
+    <PrivateRoute exact path="/CreateOffer" component={CreateOffer}/>
+    <PrivateRoute exact path="/CreateOffer/CreatedSuccess/:offerID" component={CreatedSuccess}/>    
+    <Route path="/signup" component={Signup} />
+    <Route path="/login" component={Login} />
+    <Route path="/forgot-password" component={ForgotPassword} />
+  </Container>
+  </Container>
+)
 
 export default App
