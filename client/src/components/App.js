@@ -19,7 +19,7 @@ function App() {
   return (
     <Container
       className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh"}}
+      style={{ minHeight: "100vh", maxWidth: '100%', backgroundColor: "#F9F9F9"}}
     >
       <div className="w-100 pt-5">
         <Router>
@@ -35,6 +35,7 @@ function App() {
   )
 }
 
+//Different container because the generated offer shouldn't have navbar
 const OfferContainer = () => (
   <Container>
     <Route path="/offer/:offerID" component={Offer} />
