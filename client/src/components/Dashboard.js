@@ -33,7 +33,7 @@ export default function Dashboard() {
   const options = {
     filterType: 'checkbox',
     tableBodyMaxHeight: '60vh',
-  };
+    downloadOptions:{filename: 'CreatedOffers.csv'}};
 
   return (
       <card>
@@ -41,8 +41,8 @@ export default function Dashboard() {
               Create Offer
         </Link>
         <card>
-            <MUIDataTable
-              title={"Employee List"}
+            <MUIDataTable 
+              title={"All Offers"}
               data={data}
               columns={columns}
               options={options}
