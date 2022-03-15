@@ -1,6 +1,6 @@
 import React from "react"
 import Signup from "./Signup"
-import { Container, Navbar, Nav } from "react-bootstrap"
+import { Container, Navbar, Nav, Card } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import ProfileManager from "./ProfileManager"
@@ -44,24 +44,25 @@ const OfferContainer = () => (
 
 const DefaultContainer = () => (
   <Container>
-  <Navbar fixed="top" bg="dark" variant="dark">
-    <Container >
-      <Navbar.Brand href="#home" >Offerz</Navbar.Brand>
-      <Nav className="me-auto">
-        <Nav.Link href="/">Home</Nav.Link>
-      </Nav>
+      <Navbar fixed="top" bg="dark" variant="dark">
+        <Container className="ob-5">
+          <Navbar.Brand href="https://offerz.webflow.io/" >Offerz</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/ProfileManager">Profile Manager </Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+    <Container>
+      <PrivateRoute exact path="/" component={Dashboard} /> 
+      <PrivateRoute path="/update-profile" component={UpdateProfile} />
+      <PrivateRoute exact path="/ProfileManager" component={ProfileManager}/>
+      <PrivateRoute exact path="/CreateOffer" component={CreateOffer}/>
+      <PrivateRoute exact path="/CreateOffer/CreatedSuccess/:offerID" component={CreatedSuccess}/>    
+      <Route path="/signup" component={Signup} />
+      <Route path="/login" component={Login} />
+      <Route path="/forgot-password" component={ForgotPassword} />
     </Container>
-  </Navbar>  
-  <Container>
-    <PrivateRoute exact path="/" component={Dashboard} /> 
-    <PrivateRoute path="/update-profile" component={UpdateProfile} />
-    <PrivateRoute exact path="/ProfileManager" component={ProfileManager}/>
-    <PrivateRoute exact path="/CreateOffer" component={CreateOffer}/>
-    <PrivateRoute exact path="/CreateOffer/CreatedSuccess/:offerID" component={CreatedSuccess}/>    
-    <Route path="/signup" component={Signup} />
-    <Route path="/login" component={Login} />
-    <Route path="/forgot-password" component={ForgotPassword} />
-  </Container>
   </Container>
 )
 
