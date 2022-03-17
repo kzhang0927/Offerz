@@ -3,8 +3,7 @@ import { Link, useHistory} from "react-router-dom"
 import React from "react"
 import { Form as BootStrapForm, Container, Card, Button, Alert, Table } from "react-bootstrap"
 import axios from 'axios'
-
-//const Form = JSONSchemaForm.default;
+import { useAuth } from "../contexts/AuthContext"
 
 const schema = {
     definitions: {},
@@ -17,6 +16,11 @@ const schema = {
         ],
         title: 'Time period to display offer letter',
         type: 'string'
+      },
+      creator: {
+        title: 'Creator of offer letter',
+        type: 'string',
+        default: "NOT THIS"
       },
       create_date: {
         format: 'date',
@@ -509,6 +513,7 @@ const schema = {
     required: [
       'frequency',
       'create_date',
+      'creator',
       'name',
       'title',
       'fixed_salary',
@@ -527,6 +532,9 @@ const schema = {
 const uiSchema = {
     frequency: {
       'ui:widget': 'radio'
+    },
+    creator: {
+        "ui:widget": "hidden"
     },
     fixed_salary: {
       Included: {
@@ -615,8 +623,9 @@ const uiSchema = {
       ]
     },
     'ui:order': [
-      'frequency',
+      'creator',
       'create_date',
+      'frequency',
       'name',
       'title',
       'details',
@@ -637,8 +646,10 @@ let created_offer_id = ""
 
 export default function CreateOffer(props) {
     const history = useHistory()
+    const { currentUser} = useAuth()
     const handleSubmit = async({formData}) => {
         try {
+            formData['creator'] = currentUser.email
             const response = await axios({
                 method: "post",
                 url: "http://localhost:8000/api/",
@@ -646,9 +657,7 @@ export default function CreateOffer(props) {
                 headers: { "Content-Type": "multipart/form-data" },
               })
               .then((response) => {
-                console.log(response)
                 created_offer_id = response.data.data[0].id
-                console.log(created_offer_id)
                 history.push("/CreateOffer/CreatedSuccess/"+created_offer_id)
             });
         } catch(error) {
@@ -661,7 +670,7 @@ export default function CreateOffer(props) {
             <Card style={{maxWidth:"800px", margin:"0 auto"}}>
                 <Card.Body>
                     <Form 
-                    schema={schema}
+                    schema= {schema}
                     uiSchema={uiSchema} 
                     onSubmit={handleSubmit}
                     />
