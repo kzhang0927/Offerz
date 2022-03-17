@@ -17,9 +17,9 @@ import CreatedSuccess from "./CreatedSuccess"
 
 function App() {
   return (
-    <Container
+    <Container 
       className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh", maxWidth: '100%', backgroundColor: "#F9F9F9"}}
+      style={{ minHeight: "100vh", maxWidth: "100%", backgroundColor: "#F9F9F9"}}
     >
       <div className="w-100 pt-5">
         <Router>
