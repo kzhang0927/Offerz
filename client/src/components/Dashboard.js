@@ -1,54 +1,67 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, map, useState } from 'react'
 import ReactDOM from 'react-dom'
-import { Table } from "react-bootstrap"
+import { Table, Spinner } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import MUIDataTable from "mui-datatables";
+import axios from 'axios'
 
 export default function Dashboard() {
-  const columns = ["Name", "Company", "City", "State"];
+  const columns = ["Name", "Job Title", "Create Date", "Details", "Offer Link"]
+  let offerData = []
+  let transformedData = []
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState();
 
-  const data = [
-   ["Joe James", "Test Corp", "Yonkers", "NY"],
-   ["John Walsh", "Test Corp", "Hartford", "CT"],
-   ["Bob Herm", "Test Corp", "Tampa", "FL"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-   ["James Houston", "Test Corp", "Dallas", "TX"],
-  ];
-  
+
+  useEffect(() => {
+    axios
+    .get("http://localhost:8000/api/")
+
+    .then((response) => {
+      console.log(response)
+      offerData = response.data.data[0].map((o) => {
+        return {
+          "Name": o.name,
+          "Job Title": o.title,
+          "Create Date": o.create_date,
+          "Details": o.details,
+          "Offer Link": `http://localhost:3000/Offer/${o.id}`
+        }
+      })
+      console.log(offerData)
+      transformedData = offerData.map(e => Object.values(e))
+      console.log(transformedData)
+      setData(transformedData)
+      setLoading(false);
+    })
+  }, []);
+
   const options = {
     filterType: 'checkbox',
     tableBodyMaxHeight: '60vh',
     downloadOptions:{filename: 'CreatedOffers.csv'}};
+  
+  if (isLoading) {
+      return (
+      <card style = {{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+        <Spinner animation="border" variant="primary" />    
+      </card>)
+  }
 
   return (
+    <card>
+      <Link to="/CreateOffer" className="btn btn-primary mt-3 mb-3">
+            Create Offer
+      </Link>
       <card>
-        <Link to="/CreateOffer" className="btn btn-primary mt-3 mb-3">
-              Create Offer
-        </Link>
-        <card>
-            <MUIDataTable 
-              title={"All Offers"}
-              data={data}
-              columns={columns}
-              options={options}
-            />
-        </card>
+          <MUIDataTable 
+            title={"All Offers"}
+            data={data}
+            columns={columns}
+            options={options}
+          />
       </card>
+    </card>
   )
 }
 
