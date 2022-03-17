@@ -74,6 +74,7 @@ class Other(BaseModel):
 #Still need to ensure ID is generated
 class OfferSchema(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    creator: str = Field(...)
     frequency: str = Field(...)
     create_date: date = Field(...)
     name: str = Field(...)
@@ -97,6 +98,7 @@ class OfferSchema(BaseModel):
             "example": {
                 "frequency": "weekly",
                 "create_date": "2022-02-05",
+                "creator": "kzhang0927@gmail.com",
                 "name": "John Doe",
                 "title": "Dishwasher",
                 "details": "Given full-time dishwasher offer",

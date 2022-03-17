@@ -15,6 +15,7 @@ def offer_helper(offer) -> dict:
         "id": str(offer["_id"]),
         "frequency": offer["frequency"],
         "create_date": offer["create_date"],
+        "creator": offer["creator"],
         "name": offer["name"],
         "title": offer["title"],
         "details": offer["details"],
