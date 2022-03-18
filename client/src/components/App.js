@@ -12,6 +12,8 @@ import Dashboard from "./Dashboard"
 import Offer from "./Offer"
 import CreateOffer from "./CreateOffer"
 import CreatedSuccess from "./CreatedSuccess"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 //Before deploying, ensure links are routed properly and get HTTPS
 
