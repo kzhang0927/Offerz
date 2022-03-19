@@ -192,7 +192,7 @@ export default function Offer(props) {
                     }
                   </Card>
                   <Card className= "mt-3" style={{borderRadius:"10px"}}>
-                      <Card.Title className="ml-3 mt-2 mb-2" style={{color:"#ACACAC"}}> Other benefits: </Card.Title>
+                      <Card.Title className="ml-3 mt-2 mb-2" style={{color:"#ACACAC"}}> Other Benefits: </Card.Title>
                     {isOneTimeBonus[0] =="Yes" &&  
                       <OneTimeBonuscard Amount={OneTimeBonus} Description ={isOneTimeBonus[2]}></OneTimeBonuscard>
                     }
