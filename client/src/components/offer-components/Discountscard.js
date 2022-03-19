@@ -6,11 +6,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
 
-export default function Wagecard(props) {
-    const wageAmount = props.wageAmount
+export default function Discountscard(props) {
+    const discountsAmount = props.discountsAmount
     const frequency = props.frequency
-    const minValue = props.minValue
-    const maxValue = props.maxValue
+    const minSpend = props.minSpend
+    const maxSpend = props.maxSpend
 
     const muiTheme = createMuiTheme({
         typography: {
@@ -51,37 +51,33 @@ export default function Wagecard(props) {
     
     const marks = [
         {
-          value: minValue,
-          label: minValue,
+          value: minSpend,
+          label: "$"+minSpend,
         },
         {
           value: props.defaultValue,
-          label: props.defaultValue + "/hrs per week",
+          label: "$"+props.defaultValue + " spend",
         },
         {
-          value: maxValue,
-          label: maxValue,  
+          value: maxSpend,
+          label: "$"+maxSpend,  
         },
       ];
-    // const handleChange = (event, newValue) => {
-    //     currentValue = newValue
-    // }
 
     return (
         <Card className="ml-2 mr-2 mt-2 mb-2 pt-3 pb-2" style={{borderRadius:"10px", color:"#ACACAC"}}>
-            <Card.Title className = "font-weight-normal ml-4 mr-4 border-0" >Wage</Card.Title>
-            <Card.Title className = "font-weight-bold ml-4 mr-4 border-0" style={{color:"black"}}>${Math.round(wageAmount).toLocaleString()} {frequency}</Card.Title>
+            <Card.Title className = "font-weight-normal ml-4 mr-4 border-0" >Discounts</Card.Title>
+            <Card.Title className = "font-weight-bold ml-4 mr-4 border-0" style={{color:"black"}}>${Math.round(discountsAmount).toLocaleString()} {frequency}</Card.Title>
             <Card className = "ml-4 mr-4 mb-0 border-0" >
             <ThemeProvider theme={muiTheme}>  
             <Slider
             onChangeCommitted={(event,newValue) => props.onChange(newValue)}
             size="string"
             defaultValue= {props.defaultValue}
-            step={10}
             valueLabelDisplay="off"
             marks={marks}
-            min={minValue}
-            max={maxValue}
+            min={minSpend}
+            max={maxSpend}
             />
             </ThemeProvider>
             </Card>
