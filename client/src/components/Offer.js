@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react"
-import { Link, useHistory, useParams } from "react-router-dom"
 import { Card, Spinner } from "react-bootstrap"
 import axios from 'axios'
 import Wagecard from "./offer-components/WageCard"
-import Slider from '@material-ui/core/Slider'
 import Salarycard from "./offer-components/Salarycard"
 import RecurringBonuscard from "./offer-components/RecurringBonus"
 import Perkscard from "./offer-components/Perkscard"
@@ -44,7 +42,6 @@ export default function Offer(props) {
         .get(`http://localhost:8000/api/${offerID}`)
     
         .then((response) => {
-            console.log(response)
             setFrequency(response.data.data[0].frequency)
             setName(response.data.data[0].name)
             setTitle(response.data.data[0].title)
