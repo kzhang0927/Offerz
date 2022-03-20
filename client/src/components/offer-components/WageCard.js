@@ -63,9 +63,6 @@ export default function Wagecard(props) {
           label: maxValue,  
         },
       ];
-    // const handleChange = (event, newValue) => {
-    //     currentValue = newValue
-    // }
 
     return (
         <Card className="ml-2 mr-2 mt-2 mb-2 pt-3 pb-2" style={{borderRadius:"10px", color:"#ACACAC"}}>
