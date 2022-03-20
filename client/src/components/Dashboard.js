@@ -1,25 +1,25 @@
-import React, { Component, useEffect, map, useState } from 'react'
-import ReactDOM from 'react-dom'
-import { Table, Spinner } from "react-bootstrap"
+import React, { useEffect, useState } from 'react'
+import { Spinner } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import MUIDataTable from "mui-datatables";
 import axios from 'axios'
-import { createMuiTheme, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
+import { useAuth } from "../contexts/AuthContext"
+
 
 export default function Dashboard() {
   const columns = ["Name", "Job Title", "Create Date", "Details", "Offer Link"]
   let offerData = []
   let transformedData = []
+ 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState();
-
+  const [currentUser, setCurrentUser] = useState(useAuth().currentUser.email)
 
   useEffect(() => {
     axios
-    .get("http://localhost:8000/api/")
+    .get(`http://localhost:8000/api/createdoffers/${currentUser}`)
 
     .then((response) => {
-      console.log(response)
       offerData = response.data.data[0].map((o) => {
         return {
           "Name": o.name,
@@ -29,9 +29,7 @@ export default function Dashboard() {
           "Offer Link": `http://localhost:3000/Offer/${o.id}`
         }
       })
-      console.log(offerData)
       transformedData = offerData.map(e => Object.values(e))
-      console.log(transformedData)
       setData(transformedData)
       setLoading(false);
     })
