@@ -31,9 +31,9 @@ def offer_helper(offer) -> dict:
     }
 
 # Retrieve all offers present in the database
-async def retrieve_offers():
+async def retrieve_offers(creator: str) -> dict:
     offers = []
-    async for offer in offers_collection.find():
+    async for offer in offers_collection.find({"creator": creator}):
         offers.append(offer_helper(offer))
     return offers
 

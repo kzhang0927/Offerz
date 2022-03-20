@@ -36,9 +36,9 @@ async def add_offer_data(offer: OfferSchema = Body(...)):
     new_offer = await add_offer(offer)
     return ResponseModel(new_offer, "Offer added successfully.")
 
-@router.get("/", response_description="Offers retrieved")
-async def get_offers():
-    offers = await retrieve_offers()
+@router.get("/{creator}", response_description="Offers retrieved")
+async def get_offers(creator):
+    offers = await retrieve_offers(creator)
     if offers:
         return ResponseModel(offers, "Offers retrieved successfully")
     return ResponseModel(offers, "No offers found")
