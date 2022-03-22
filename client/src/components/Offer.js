@@ -39,7 +39,7 @@ export default function Offer(props) {
 
     useEffect(() => { 
         axios
-        .get(`http://localhost:8000/api/${offerID}`)
+        .get(`https://api-offerz.herokuapp.com/api/${offerID}`)
     
         .then((response) => {
             setFrequency(response.data.data[0].frequency)
