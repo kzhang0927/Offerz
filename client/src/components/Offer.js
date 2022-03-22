@@ -138,7 +138,7 @@ export default function Offer(props) {
                     ((expectedWeeklyOTHours*Number(isWage[1])*Number(isWage[2])) //Calculates # OT hours then multiplies by OT rate. # OT hours is Max (Expected - OT, 0)
                     + 
                     ((Hours - expectedWeeklyOTHours)*Number(isWage[1])))
-                    *4
+                    *52
                 )
             }
      }
@@ -161,8 +161,10 @@ export default function Offer(props) {
                   <h2 className="mb-4 mt-4" style={{fontSize:"25px"}}>Congratulations on the {title} offer, {name}! </h2>
                   <Card className = "mb-4" style={{borderRadius: '25px', backgroundColor: "#9A63FB"}}>
                     <body className="mt-2" style={{fontSize:"20px", textAlign: "center", backgroundColor: "transparent", color:"white"}}>Potential Total {frequency} Value </body>
-                    <body style={{fontSize:"25px", textAlign: "center", backgroundColor: "transparent", color:"white", fontWeight:"bold"}}>${Math.round(Fixed+Wage+RecurringBonus+Discounts+Perks+Tips+Other).toLocaleString()} </body>
-                    <body className="mb-2" style={{fontSize:"13px", textAlign: "center", backgroundColor: "transparent", color:"white"}}>+ one-time bonus of ${Math.round(OneTimeBonus).toLocaleString()} </body>
+                    <body className = "mb-2" style={{fontSize:"25px", textAlign: "center", backgroundColor: "transparent", color:"white", fontWeight:"bold"}}>${Math.round(Fixed+Wage+RecurringBonus+Discounts+Perks+Tips+Other).toLocaleString()} </body>
+                    {isOneTimeBonus[0] == "Yes" &&
+                        <body className="mb-2" style={{fontSize:"13px", textAlign: "center", backgroundColor: "transparent", color:"white"}}>+ one-time bonus of ${Math.round(OneTimeBonus).toLocaleString()} </body>
+                    }
                   </Card>
                   <Card style={{borderRadius:"10px", backgroundColor:"#FAFAFA"}}>
                       <Card.Title className="ml-3 mt-2 mb-2" style={{color:"#ACACAC"}}> {frequency} Breakdown:</Card.Title>
@@ -188,7 +190,7 @@ export default function Offer(props) {
                         <Othercard otherAmount={Other} frequency={frequency}></Othercard>
                     }
                   </Card>
-                  <Card className= "mt-3" style={{borderRadius:"10px"}}>
+                  <Card className= "mt-3" style={{borderRadius:"10px", backgroundColor:"#FAFAFA"}}>
                       <Card.Title className="ml-3 mt-2 mb-2" style={{color:"#ACACAC"}}> Other Benefits: </Card.Title>
                     {isOneTimeBonus[0] =="Yes" &&  
                       <OneTimeBonuscard Amount={OneTimeBonus} Description ={isOneTimeBonus[2]}></OneTimeBonuscard>

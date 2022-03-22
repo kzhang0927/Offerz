@@ -74,7 +74,7 @@ export default function Wagecard(props) {
             onChangeCommitted={(event,newValue) => props.onChange(newValue)}
             size="string"
             defaultValue= {props.defaultValue}
-            step={10}
+            step={5}
             valueLabelDisplay="off"
             marks={marks}
             min={minValue}
