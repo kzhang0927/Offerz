@@ -652,7 +652,7 @@ export default function CreateOffer(props) {
             formData['creator'] = currentUser.email
             const response = await axios({
                 method: "post",
-                url: "http://localhost:8000/api/",
+                url: "https://api-offerz.herokuapp.com/api/",
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" },
               })

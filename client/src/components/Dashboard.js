@@ -14,10 +14,10 @@ export default function Dashboard() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState();
   const [currentUser, setCurrentUser] = useState(useAuth().currentUser.email)
-
+//http://localhost:8000
   useEffect(() => {
     axios
-    .get(`http://localhost:8000/api/createdoffers/${currentUser}`)
+    .get(`https://api-offerz.herokuapp.com/api/createdoffers/${currentUser}`)
 
     .then((response) => {
       offerData = response.data.data[0].map((o) => {
