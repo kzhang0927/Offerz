@@ -26,7 +26,7 @@ export default function Dashboard() {
           "Job Title": o.title,
           "Create Date": o.create_date,
           "Details": o.details,
-          "Offer Link": `https://offerz-app.herokuapp.com/${o.id}`
+          "Offer Link": `https://offerz-app.herokuapp.com/offer/${o.id}`
         }
       })
       transformedData = offerData.map(e => Object.values(e))

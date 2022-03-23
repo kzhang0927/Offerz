@@ -15,7 +15,7 @@ export default function CreatedSuccess(props) {
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Offer Created!</h2>
-            <body className="text-center mb-4">Link to offer: "https://offerz-app.herokuapp.com/"+{offerID} </body>
+            <body className="text-center mb-4">Link to offer: "https://offerz-app.herokuapp.com/offer/"+{offerID} </body>
             <Link to={'/Offer/'+offerID } className="btn btn-primary w-100 mt-3">
               Go to Offer
             </Link>
