@@ -190,15 +190,17 @@ export default function Offer(props) {
                         <Othercard otherAmount={Other} frequency={frequency}></Othercard>
                     }
                   </Card>
-                  <Card className= "mt-3" style={{borderRadius:"10px", backgroundColor:"#FAFAFA"}}>
-                      <Card.Title className="ml-3 mt-2 mb-2" style={{color:"#ACACAC"}}> Other Benefits: </Card.Title>
-                    {isOneTimeBonus[0] =="Yes" &&  
-                      <OneTimeBonuscard Amount={OneTimeBonus} Description ={isOneTimeBonus[2]}></OneTimeBonuscard>
-                    }
-                    {isNonMonetary[0] =="Yes" &&  
-                      <NonMonetarycard Description={isNonMonetary[1]}></NonMonetarycard>
-                    }
-                  </Card>
+                  { (isOneTimeBonus[0] =="Yes" && isNonMonetary[0] =="Yes") &&  
+                    <Card className= "mt-3" style={{borderRadius:"10px", backgroundColor:"#FAFAFA"}}>
+                        <Card.Title className="ml-3 mt-2 mb-2" style={{color:"#ACACAC"}}> Other Benefits: </Card.Title>
+                        {isOneTimeBonus[0] =="Yes" &&  
+                        <OneTimeBonuscard Amount={OneTimeBonus} Description ={isOneTimeBonus[2]}></OneTimeBonuscard>
+                        }
+                        {isNonMonetary[0] =="Yes" &&  
+                        <NonMonetarycard Description={isNonMonetary[1]}></NonMonetarycard>
+                        }
+                    </Card>
+                  }
                 </Card.Body>
               </Card>
             </>
