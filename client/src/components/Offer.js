@@ -174,14 +174,14 @@ export default function Offer(props) {
                     {isWage[0] == "Yes" &&
                         <Wagecard onChange={updateExpectedHours} defaultValue={isWage[6]} minValue={isWage[4]} maxValue={isWage[5]} wageAmount={Wage} frequency={frequency}></Wagecard>
                     }
+                    {isTips[0] == "Yes" &&                                                                   
+                        <Tipscard tipsAmount={Tips} frequency={frequency}></Tipscard>
+                    }                    
                     {isRecurringBonus[0] == "Yes" &&                     
                         <RecurringBonuscard bonusAmount={RecurringBonus} frequency={frequency}></RecurringBonuscard>
                     }
                     {isDiscounts[0] == "Yes" &&                                             
                         <Discountscard onChange={updateExpectedSpend} defaultValue={isDiscounts[4]} minSpend={isDiscounts[3]} maxSpend={isDiscounts[5]} discountsAmount={Discounts} frequency={frequency}></Discountscard>
-                    }
-                    {isTips[0] == "Yes" &&                                                                   
-                        <Tipscard tipsAmount={Tips} frequency={frequency}></Tipscard>
                     }
                     {isPerks[0] == "Yes" &&                                                                   
                         <Perkscard perksAmount={Perks} frequency={frequency}></Perkscard>
