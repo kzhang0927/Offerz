@@ -358,7 +358,7 @@ const schema = {
               'Yes',
               'No'
             ],
-            title: 'Are there any perks that have a monetary value?',
+            title: 'Are there any perks that have a monetary value? (for example, family meals)',
             type: 'string'
           }
         },
