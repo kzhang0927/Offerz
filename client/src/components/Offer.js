@@ -147,6 +147,10 @@ export default function Offer(props) {
         setDiscounts(Spend*isDiscounts[1]) //New spend number times the discount %
     }
 
+    const updateExpectedTips = Tips => {
+        setTips(Tips) 
+    }
+
      if (isLoading) {
         return (
         <card style = {{ position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
@@ -174,8 +178,8 @@ export default function Offer(props) {
                     {isWage[0] == "Yes" &&
                         <Wagecard onChange={updateExpectedHours} defaultValue={isWage[6]} minValue={isWage[4]} maxValue={isWage[5]} wageAmount={Wage} frequency={frequency}></Wagecard>
                     }
-                    {isTips[0] == "Yes" &&                                                                   
-                        <Tipscard tipsAmount={Tips} frequency={frequency}></Tipscard>
+                    {isTips[0] == "Yes" &&          //add minTips maxTips                                                         
+                        <Tipscard tipsAmount={Tips} defaultValue={isTips[1]} onChange={updateExpectedTips} frequency={frequency}></Tipscard>
                     }                    
                     {isRecurringBonus[0] == "Yes" &&                     
                         <RecurringBonuscard bonusAmount={RecurringBonus} frequency={frequency}></RecurringBonuscard>
