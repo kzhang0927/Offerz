@@ -9,8 +9,8 @@ import { ThemeProvider } from '@material-ui/styles';
 export default function Tipscard(props) {
     const tipsAmount = props.tipsAmount
     const frequency = props.frequency
-    const minTips = 0 //props.minTips
-    const maxTips = 10000 //props.maxTips
+    const minTips = props.minTips
+    const maxTips = props.maxTips
 
     const muiTheme = createMuiTheme({
         typography: {

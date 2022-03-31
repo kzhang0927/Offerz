@@ -425,9 +425,20 @@ const schema = {
                       'Yes'
                     ]
                   },
+                  Min_Tips: {
+                    title: 'Minimum weekly tips',
+                    type: 'integer',
+                    default: 0,
+                    description: 'Minimum tips per period to display in the offer letter. Defaults to 0'
+                  },
                   Expected_Amount: {
                     title: 'Expected amount of tips per period',
                     type: 'number'
+                  },
+                  Max_Tips: {
+                    title: 'Maximum weekly tips',
+                    type: 'integer',
+                    description: 'Maximum tips per period to display in the offer letter.'
                   },
                   Description: {
                     title: 'Description',
@@ -435,7 +446,8 @@ const schema = {
                   }
                 },
                 required: [
-                  'Expected_Amount'
+                  'Expected_Amount',
+                  'Max_Tips'
                 ]
               },
               {
@@ -555,8 +567,8 @@ const uiSchema = {
         'OT_Mult',
         'OT_Hours',
         'Min_Hours',
-        'Max_Hours',
-        'Expected_Weekly_Hours'
+        'Expected_Weekly_Hours',
+        'Max_Hours'
       ]
     },
     recurring_bonus: {
@@ -608,7 +620,9 @@ const uiSchema = {
       },
       'ui:order': [
         'Included',
+        'Min_Tips',
         'Expected_Amount',
+        'Max_Tips',
         'Description'
       ]
     },
@@ -632,11 +646,11 @@ const uiSchema = {
       'non_monetary_benefits',
       'fixed_salary',
       'hourly_wage',
+      'tips',
       'recurring_bonus',
       'onetime_bonus',
       'discounts',
       'perks',
-      'tips',
       'other'
     ],
     definitions: {}
