@@ -63,7 +63,9 @@ class Perks(BaseModel):
 # For tips nested subclass
 class Tips(BaseModel):
     Included: str = Field(...) #Required
+    Min_Tips: Optional[float] = 0 #Defaults to $0
     Expected_Amount: Optional[float] # If chosen we need to require this in UI
+    Max_Tips: Optional[float]
     Description: Optional[str]
 
 class Other(BaseModel):
