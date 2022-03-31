@@ -100,7 +100,7 @@ export default function Offer(props) {
                 setPerks(Number(response.data.data[0].perks.Amount))
             } 
             
-            setIsTips([response.data.data[0].tips.Included, response.data.data[0].tips.Expected_Amount, response.data.data[0].tips.Description])
+            setIsTips([response.data.data[0].tips.Included, response.data.data[0].tips.Min_Tips, response.data.data[0].tips.Expected_Amount, response.data.data[0].tips.Max_Tips, response.data.data[0].tips.Description])
             if (response.data.data[0].tips.Included =="Yes") {
                 setTips(Number(response.data.data[0].tips.Expected_Amount))
             } 
@@ -178,8 +178,8 @@ export default function Offer(props) {
                     {isWage[0] == "Yes" &&
                         <Wagecard onChange={updateExpectedHours} defaultValue={isWage[6]} minValue={isWage[4]} maxValue={isWage[5]} wageAmount={Wage} frequency={frequency}></Wagecard>
                     }
-                    {isTips[0] == "Yes" &&          //add minTips maxTips                                                         
-                        <Tipscard tipsAmount={Tips} defaultValue={isTips[1]} onChange={updateExpectedTips} frequency={frequency}></Tipscard>
+                    {isTips[0] == "Yes" &&                                                                  
+                        <Tipscard tipsAmount={Tips} defaultValue={isTips[2]} minTips={isTips[1]} maxTips={isTips[3]} onChange={updateExpectedTips} frequency={frequency}></Tipscard>
                     }                    
                     {isRecurringBonus[0] == "Yes" &&                     
                         <RecurringBonuscard bonusAmount={RecurringBonus} frequency={frequency}></RecurringBonuscard>
